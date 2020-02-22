@@ -1,4 +1,4 @@
-package me.puzzle.x.caculator.BigDecimal;
+package me.puzzle.x.caculator.bigdecimal;
 
 import java.math.BigDecimal;
 
