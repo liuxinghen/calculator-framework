@@ -21,6 +21,7 @@ public class BigDecimalOperationFactory implements OperationFactory<BigDecimal> 
 		availableOperators.add(new BigDecimalMultiply());
 		availableOperators.add(new BigDecimalDivide());
 		availableOperators.add(new BigDecimalSqrt());
+		availableOperators.add(new BigDecimalAvgN());
 		availableOperators.add(new ClearOperation<BigDecimal>());
 		RedoOperator<BigDecimal> redoOperation = new RedoOperator<BigDecimal>(this);
 		availableOperators.add(new UndoOperation<BigDecimal>(redoOperation));

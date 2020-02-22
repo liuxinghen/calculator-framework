@@ -35,7 +35,7 @@ public class StackCalculator<T> implements Calculator<T> {
 		if (op == null) {
 			return false;
 		}
-		Iterator<Result<T>> results = op.calculate(new ArgsSupplier<T>() {
+		Iterator<? extends Result<T>> results = op.calculate(input, new ArgsSupplier<T>() {
 			@Override
 			public Result<T> get() {
 				return stack.pop();

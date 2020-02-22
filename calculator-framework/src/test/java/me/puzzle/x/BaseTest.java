@@ -47,6 +47,17 @@ public class BaseTest {
 	}
 
 	@Test
+	public void testAvgN() {
+		DecimalCalculator calculator = new DecimalCalculator(System.out);
+		calculator.apply("1 2 3 4 avg:4");
+		testAssertion("2.5", calculator);
+		calculator.apply("undo");
+		testAssertion("1 2 3 4", calculator);
+		calculator.apply("redo");
+		testAssertion("2.5", calculator);
+	}
+
+	@Test
 	public void testUndo() {
 		DecimalCalculator calculator = new DecimalCalculator(System.out);
 		calculator.apply("9 8 + undo");
