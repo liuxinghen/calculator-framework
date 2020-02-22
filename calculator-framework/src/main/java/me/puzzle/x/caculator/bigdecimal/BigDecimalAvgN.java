@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import me.puzzle.x.caculator.result.CaculationResult;
+import me.puzzle.x.caculator.result.CalculationResult;
 import me.puzzle.x.caculator.spec.ArgsSupplier;
 import me.puzzle.x.caculator.spec.Operator;
 import me.puzzle.x.caculator.spec.Result;
@@ -29,7 +29,7 @@ public class BigDecimalAvgN implements Operator<BigDecimal> {
 	}
 
 	@Override
-	public boolean couldHandle(String input) {
+	public boolean canHandle(String input) {
 		return getNFromOperator(input) != null;
 
 	}
@@ -48,7 +48,7 @@ public class BigDecimalAvgN implements Operator<BigDecimal> {
 			args.addFirst(arg);
 		}
 		sum /= n;
-		return Arrays.asList(new CaculationResult<BigDecimal>(new BigDecimal(sum), operator, args)).iterator();
+		return Arrays.asList(new CalculationResult<BigDecimal>(new BigDecimal(sum), operator, args)).iterator();
 	}
 
 	@Override

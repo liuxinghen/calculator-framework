@@ -5,13 +5,13 @@ import java.util.List;
 
 import me.puzzle.x.caculator.spec.Result;
 
-public class CaculationResult<T> implements Result<T> {
+public class CalculationResult<T> implements Result<T> {
 
 	private List<Result<T>> history;
 	private String operator;
 	private T result;
 
-	public CaculationResult(T result, String operator, List<Result<T>> history) {
+	public CalculationResult(T result, String operator, List<Result<T>> history) {
 		this.result = result;
 		this.operator = operator;
 		this.history = history;

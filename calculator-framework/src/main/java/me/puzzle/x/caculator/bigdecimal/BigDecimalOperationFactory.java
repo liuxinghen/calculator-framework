@@ -31,12 +31,12 @@ public class BigDecimalOperationFactory implements OperationFactory<BigDecimal> 
 	@Override
 	public Operator<BigDecimal> getOperation(String input) {
 		for (Operator<BigDecimal> handler : availableOperators) {
-			if (handler.couldHandle(input)) {
+			if (handler.canHandle(input)) {
 				return handler;
 			}
 		}
 		Operator<BigDecimal> inputHandler = new BigDecimalInput(input);
-		if (inputHandler.couldHandle(input)) {
+		if (inputHandler.canHandle(input)) {
 			return inputHandler;
 		}
 		return null;

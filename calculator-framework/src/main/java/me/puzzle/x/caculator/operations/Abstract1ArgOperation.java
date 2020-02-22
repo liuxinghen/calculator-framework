@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.function.Function;
 
-import me.puzzle.x.caculator.result.CaculationResult;
+import me.puzzle.x.caculator.result.CalculationResult;
 import me.puzzle.x.caculator.spec.Result;
 import me.puzzle.x.caculator.spec.ArgsSupplier;
 import me.puzzle.x.caculator.spec.Operator;
@@ -22,12 +22,12 @@ public abstract class Abstract1ArgOperation<T> implements Operator<T>, Function<
 		List<Result<T>> history = new ArrayList<>();
 		history.add(arg);
 		T result = apply(arg.getResult());
-		Result<T> actionResult = new CaculationResult<>(result, getOperator(), history);
+		Result<T> actionResult = new CalculationResult<>(result, getOperator(), history);
 		return Arrays.asList(actionResult).iterator();
 	}
 
 	@Override
-	public boolean couldHandle(String input) {
+	public boolean canHandle(String input) {
 		return getOperator().equals(input);
 	}
 

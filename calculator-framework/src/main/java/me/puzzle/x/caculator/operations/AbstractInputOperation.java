@@ -25,7 +25,7 @@ public abstract class AbstractInputOperation<T> implements Operator<T>, Function
 	}
 
 	@Override
-	public boolean couldHandle(String input) {
+	public boolean canHandle(String input) {
 		try {
 			return apply(input) != null;
 		} catch (Exception e) {

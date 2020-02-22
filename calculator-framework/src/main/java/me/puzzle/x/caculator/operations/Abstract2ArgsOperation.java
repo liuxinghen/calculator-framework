@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.function.BiFunction;
 
-import me.puzzle.x.caculator.result.CaculationResult;
+import me.puzzle.x.caculator.result.CalculationResult;
 import me.puzzle.x.caculator.spec.ArgsSupplier;
 import me.puzzle.x.caculator.spec.Operator;
 import me.puzzle.x.caculator.spec.Result;
@@ -27,13 +27,13 @@ public abstract class Abstract2ArgsOperation<T> implements Operator<T>, BiFuncti
 		if (result == null) {
 			return null;
 		} else {
-			Result<T> actionResult = new CaculationResult<>(result, getOperator(), history);
+			Result<T> actionResult = new CalculationResult<>(result, getOperator(), history);
 			return Arrays.asList(actionResult).iterator();
 		}
 	}
 
 	@Override
-	public boolean couldHandle(String input) {
+	public boolean canHandle(String input) {
 		return getOperator().equals(input);
 	}
 

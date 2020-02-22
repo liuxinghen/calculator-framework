@@ -20,7 +20,7 @@ public class UndoOperation<T> implements Operator<T> {
 	}
 
 	@Override
-	public boolean couldHandle(String input) {
+	public boolean canHandle(String input) {
 		return "undo".equals(input);
 	}
 

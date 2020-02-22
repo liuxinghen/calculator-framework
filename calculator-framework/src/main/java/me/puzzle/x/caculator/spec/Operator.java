@@ -4,12 +4,12 @@ import java.util.Iterator;
 
 public interface Operator<T> {
 
-	boolean couldHandle(String input);
+	boolean canHandle(String input);
 
 	Iterator<? extends Result<T>> calculate(ArgsSupplier<T> provider);
 
 	default Iterator<? extends Result<T>> calculate(String operator, ArgsSupplier<T> provider) {
-		if (couldHandle(operator)) {
+		if (canHandle(operator)) {
 			return calculate(provider);
 		} else {
 			return null;

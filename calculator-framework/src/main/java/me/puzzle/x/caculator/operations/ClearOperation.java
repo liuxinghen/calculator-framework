@@ -13,7 +13,7 @@ public class ClearOperation<T> implements Operator<T> {
 	private String operator = "clear";
 
 	@Override
-	public boolean couldHandle(String input) {
+	public boolean canHandle(String input) {
 		return this.operator.equals(input);
 	}
 

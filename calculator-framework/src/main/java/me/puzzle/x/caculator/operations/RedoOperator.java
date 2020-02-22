@@ -21,7 +21,7 @@ public class RedoOperator<T> implements Operator<T>, Consumer<String> {
 	}
 
 	@Override
-	public boolean couldHandle(String input) {
+	public boolean canHandle(String input) {
 		return "redo".equals(input);
 	}
 
