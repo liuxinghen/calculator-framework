@@ -24,8 +24,12 @@ public abstract class Abstract2ArgsOperation<T> implements Operator<T>, BiFuncti
 		history.add(_1stArg);
 		history.add(_2ndArg);
 		T result = apply(_1stArg.getResult(), _2ndArg.getResult());
-		Result<T> actionResult = new CaculationResult<>(result, getOperator(), history);
-		return Arrays.asList(actionResult).iterator();
+		if (result == null) {
+			return null;
+		} else {
+			Result<T> actionResult = new CaculationResult<>(result, getOperator(), history);
+			return Arrays.asList(actionResult).iterator();
+		}
 	}
 
 	@Override

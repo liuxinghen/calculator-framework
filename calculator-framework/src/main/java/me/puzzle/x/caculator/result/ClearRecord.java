@@ -20,7 +20,7 @@ public class ClearRecord<T> implements Result<T> {
 			LinkedList<Result<T>> stackSnapshot = new LinkedList<>();
 			try {
 				while (true) {
-					stackSnapshot.addLast(supplier.get());
+					stackSnapshot.addFirst(supplier.get());
 				}
 			} catch (Exception e) {
 

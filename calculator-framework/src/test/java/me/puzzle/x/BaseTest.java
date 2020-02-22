@@ -1,110 +1,72 @@
 package me.puzzle.x;
 
-import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+import static me.puzzle.x.TestUtil.testAssertion;
 
-import org.apache.commons.lang3.StringUtils;
-import org.junit.Assert;
 import org.junit.Test;
 
 import me.puzzle.x.caculator.DecimalCalculator;
 
-public class MoreTest {
-
-	private void testAssertion(String expect, DecimalCalculator calculator) {
-		List<BigDecimal> expectList = Arrays.asList(expect.split(" ")).stream().filter(s -> StringUtils.isNotBlank(s))
-				.map(s -> new BigDecimal(s)).collect(Collectors.toList());
-		Assert.assertEquals(DecimalCalculator.stackStatus(expectList),
-				DecimalCalculator.stackStatus(calculator.getCurrentStack()));
-	}
+public class BaseTest {
 
 	@Test
-	public void test1() {
+	public void testAdd() {
 		DecimalCalculator calculator = new DecimalCalculator(System.out);
-		calculator.apply("5 2");
-		testAssertion("5 2", calculator);
-	}
-
-	@Test
-	public void test2() {
-		DecimalCalculator calculator = new DecimalCalculator(System.out);
-		calculator.apply("2 sqrt");
-		testAssertion("1.4142135623", calculator);
-		calculator.apply("clear 9 sqrt");
+		calculator.apply("1 2 +");
 		testAssertion("3", calculator);
-
 	}
 
 	@Test
-	public void test3() {
+	public void testMinus() {
 		DecimalCalculator calculator = new DecimalCalculator(System.out);
-		calculator.apply("5 2 -");
-		testAssertion("3", calculator);
-		calculator.apply("3 -");
-		testAssertion("0", calculator);
-		calculator.apply("clear");
-		testAssertion("", calculator);
-
-	}
-
-	@Test
-	public void test4() {
-		DecimalCalculator calculator = new DecimalCalculator(System.out);
-		calculator.apply("5 4 3 2");
-		testAssertion("5 4 3 2", calculator);
-		calculator.apply("undo undo *");
-		testAssertion("20", calculator);
-		calculator.apply("5 *");
-		testAssertion("100", calculator);
-		calculator.apply("undo");
-		testAssertion("20 5", calculator);
-	}
-
-	@Test
-	public void test5() {
-		DecimalCalculator calculator = new DecimalCalculator(System.out);
-		calculator.apply("7 12 2 /");
-		testAssertion("7 6", calculator);
-		calculator.apply("*");
-		testAssertion("42", calculator);
-		calculator.apply("4 /");
-		testAssertion("10.5", calculator);
-	}
-
-	@Test
-	public void test6() {
-		DecimalCalculator calculator = new DecimalCalculator(System.out);
-		calculator.apply("1 2 3 4 5");
-		testAssertion("1 2 3 4 5", calculator);
-		calculator.apply("*");
-		testAssertion("1 2 3 20", calculator);
-		calculator.apply("clear 3 4 -");
+		calculator.apply("1 2 -");
 		testAssertion("-1", calculator);
 	}
 
 	@Test
-	public void test7() {
+	public void testMultiple() {
 		DecimalCalculator calculator = new DecimalCalculator(System.out);
-		calculator.apply("1 2 3 4 5");
-		testAssertion("1 2 3 4 5", calculator);
-		calculator.apply("* * * *");
-		testAssertion("120", calculator);
+		calculator.apply("1.1 1.1 *");
+		testAssertion("1.21", calculator);
 	}
 
 	@Test
-	public void test8() {
+	public void testDivide() {
 		DecimalCalculator calculator = new DecimalCalculator(System.out);
-		calculator.apply("1 2 3 * 5 + * * 6 5");
-		testAssertion("11", calculator);
+		calculator.apply("1.1 1.1 /");
+		testAssertion("1", calculator);
+		calculator.apply("0 /");
 	}
 
 	@Test
-	public void test9() {
+	public void testSqrt() {
 		DecimalCalculator calculator = new DecimalCalculator(System.out);
-		calculator.apply("undo");
-		testAssertion("", calculator);
+		calculator.apply("9 sqrt");
+		testAssertion("3", calculator);
+		calculator.apply("1.44 sqrt");
+		testAssertion("3 1.2", calculator);
+	}
+
+	@Test
+	public void testUndo() {
+		DecimalCalculator calculator = new DecimalCalculator(System.out);
+		calculator.apply("9 8 + undo");
+		testAssertion("9 8", calculator);
+		calculator.apply("redo");
+		testAssertion("17", calculator);
+	}
+
+	@Test
+	public void testClearUndo() {
+		DecimalCalculator calculator = new DecimalCalculator(System.out);
+		calculator.apply("1 2 3 clear 1 clear undo undo undo");
+		testAssertion("1 2 3", calculator);
+	}
+
+	@Test
+	public void testClearUndoRedo() {
+		DecimalCalculator calculator = new DecimalCalculator(System.out);
+		calculator.apply("1 2 3 clear 1 clear undo undo undo redo redo");
+		testAssertion("1", calculator);
 	}
 
 }
