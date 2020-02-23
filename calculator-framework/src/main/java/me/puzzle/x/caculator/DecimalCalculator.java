@@ -25,9 +25,6 @@ public class DecimalCalculator implements Calculator<BigDecimal> {
 	private PrintStream out;
 
 	public DecimalCalculator(PrintStream out) {
-		if (out == null) {
-			out = System.out;
-		}
 		this.out = out;
 	}
 
@@ -47,10 +44,8 @@ public class DecimalCalculator implements Calculator<BigDecimal> {
 		boolean space = true;
 		int start = 0;
 		int end = 0;
-		while (true) {
-			if (start >= input.length()) {
-				break;
-			} else if (end >= input.length()) {
+		while (start < input.length()) {
+			if (end >= input.length()) {
 				command.put(start, input.substring(start, end));
 				break;
 			} else if (space && input.charAt(start) == ' ') {
@@ -69,6 +64,12 @@ public class DecimalCalculator implements Calculator<BigDecimal> {
 		return command;
 	}
 
+	private void println(String message) {
+		if (out != null) {
+			out.println(message);
+		}
+	}
+
 	@Override
 	public boolean apply(String input) {
 		if (errorMessage == null && StringUtils.isNotBlank(input)) {
@@ -82,9 +83,9 @@ public class DecimalCalculator implements Calculator<BigDecimal> {
 			}
 		}
 		if (errorMessage != null) {
-			out.println(errorMessage);
+			this.println(errorMessage);
 		}
-		out.println(stackStatus(this.getCurrentStack()));
+		this.println(stackStatus(this.getCurrentStack()));
 		return errorMessage == null;
 	}
 
