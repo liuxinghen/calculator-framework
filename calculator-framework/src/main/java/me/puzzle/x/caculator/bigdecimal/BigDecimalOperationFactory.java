@@ -30,13 +30,8 @@ public class BigDecimalOperationFactory implements OperationFactory<BigDecimal> 
 	}
 
 	@Override
-	public Operator<BigDecimal> getOperation(String input) {
-		for (Operator<BigDecimal> handler : availableOperators) {
-			if (handler.canHandle(input)) {
-				return handler;
-			}
-		}
-		return null;
+	public List<Operator<BigDecimal>> getAvailableOperators() {
+		return this.availableOperators;
 	}
 
 }

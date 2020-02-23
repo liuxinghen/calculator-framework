@@ -15,7 +15,6 @@ public class TestUtil {
 	public static void testAssertion(String expect, DecimalCalculator calculator) {
 		List<BigDecimal> expectList = Arrays.asList(expect.split(" ")).stream().filter(s -> StringUtils.isNotBlank(s))
 				.map(s -> new BigDecimal(s)).collect(Collectors.toList());
-		Assert.assertEquals(DecimalCalculator.stackStatus(expectList),
-				DecimalCalculator.stackStatus(calculator.getCurrentStack()));
+		Assert.assertEquals(calculator.stackStatus(expectList), calculator.stackStatus(calculator.getCurrentStack()));
 	}
 }

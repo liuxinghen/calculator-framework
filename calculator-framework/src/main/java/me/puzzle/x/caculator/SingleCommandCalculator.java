@@ -6,6 +6,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.apache.commons.lang3.StringUtils;
+
 import me.puzzle.x.caculator.factory.OperationFactory;
 import me.puzzle.x.caculator.result.ClearRecord;
 import me.puzzle.x.caculator.spec.ArgsSupplier;
@@ -13,7 +15,7 @@ import me.puzzle.x.caculator.spec.Calculator;
 import me.puzzle.x.caculator.spec.Operator;
 import me.puzzle.x.caculator.spec.Result;
 
-public class StackCalculator<T> implements Calculator<T> {
+public class SingleCommandCalculator<T> implements Calculator<T> {
 
 	private LinkedList<Result<T>> stack = new LinkedList<>();
 
@@ -21,12 +23,15 @@ public class StackCalculator<T> implements Calculator<T> {
 
 	private OperationFactory<T> operationFactory;
 
-	public StackCalculator(OperationFactory<T> operationFactory) {
+	public SingleCommandCalculator(OperationFactory<T> operationFactory) {
 		this.operationFactory = operationFactory;
 	}
 
 	@Override
 	public boolean apply(String input) {
+		if (StringUtils.isBlank(input)) {
+			return false;
+		}
 		Operator<T> op = operationFactory.getOperation(input);
 		if (op == null) {
 			return false;
