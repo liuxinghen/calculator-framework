@@ -8,12 +8,12 @@ import me.puzzle.x.caculator.operations.AbstractNToOneOperation;
 public class BigDecimalInput extends AbstractNToOneOperation<BigDecimal> {
 
 	@Override
-	protected Integer requiredArgsCount(String operator) {
+	protected int requiredArgsCount(String operator) {
 		try {
 			new BigDecimal(operator);
 			return 0;
 		} catch (Exception e) {
-			return null;
+			return -1;
 		}
 	}
 

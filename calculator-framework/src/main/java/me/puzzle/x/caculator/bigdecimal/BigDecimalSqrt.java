@@ -8,8 +8,8 @@ import me.puzzle.x.caculator.operations.AbstractNToOneOperation;
 public class BigDecimalSqrt extends AbstractNToOneOperation<BigDecimal> {
 
 	@Override
-	protected Integer requiredArgsCount(String operator) {
-		return "sqrt".equals(operator) ? 1 : null;
+	protected int requiredArgsCount(String operator) {
+		return "sqrt".equals(operator) ? 1 : -1;
 	}
 
 	@Override

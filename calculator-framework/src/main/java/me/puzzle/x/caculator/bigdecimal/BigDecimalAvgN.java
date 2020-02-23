@@ -7,19 +7,16 @@ import me.puzzle.x.caculator.operations.AbstractNToOneOperation;
 
 public class BigDecimalAvgN extends AbstractNToOneOperation<BigDecimal> {
 
-	protected Integer requiredArgsCount(String input) {
+	@Override
+	protected int requiredArgsCount(String input) {
 		String[] op = input.split(":");
 		if (op.length != 2 || !"avg".equals(op[0])) {
-			return null;
+			return -1;
 		}
 		try {
-			int n = Integer.parseInt(op[1]);
-			if (n > 0) {
-				return n;
-			}
-			return null;
+			return Integer.parseInt(op[1]);
 		} catch (NumberFormatException e) {
-			return null;
+			return -1;
 		}
 	}
 

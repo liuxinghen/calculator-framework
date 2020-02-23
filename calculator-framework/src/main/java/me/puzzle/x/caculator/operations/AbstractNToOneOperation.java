@@ -15,15 +15,16 @@ import me.puzzle.x.caculator.spec.Result;
 public abstract class AbstractNToOneOperation<T> implements Operator<T> {
 
 	/**
-	 * test whether the operator string could be handled by this operation. <br/>
-	 * If true, return the arguments count required by this operation. <br/>
-	 * Otherwise, return null object to represent this operation doesn't handle this
-	 * operator string.
+	 * check whether the operator string could be handled by this operation. <br/>
+	 * If true, return the arguments count (bigger than or equal to 0) required by
+	 * this operation. <br/>
+	 * Otherwise, return a negative value to represent this operation doesn't handle
+	 * this operator string.
 	 * 
-	 * @param input
+	 * @param operator
 	 * @return
 	 */
-	protected abstract Integer requiredArgsCount(String operator);
+	protected abstract int requiredArgsCount(String operator);
 
 	/**
 	 * the concrete calculation process that calculate a result from n arguments.
@@ -37,13 +38,13 @@ public abstract class AbstractNToOneOperation<T> implements Operator<T> {
 
 	@Override
 	public boolean canHandle(String input) {
-		return this.requiredArgsCount(input) != null;
+		return this.requiredArgsCount(input) >= 0;
 	}
 
 	@Override
 	public Iterator<Result<T>> calculate(String operator, ArgsSupplier<T> provider) {
-		Integer n = this.requiredArgsCount(operator);
-		if (n == null || !provider.canSupply(n)) {
+		int n = this.requiredArgsCount(operator);
+		if (n < 0 || !provider.canSupply(n)) {
 			return null;
 		}
 		LinkedList<Result<T>> args = new LinkedList<>();

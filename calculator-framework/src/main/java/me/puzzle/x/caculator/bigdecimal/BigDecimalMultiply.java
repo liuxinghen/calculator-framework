@@ -8,8 +8,8 @@ import me.puzzle.x.caculator.operations.AbstractNToOneOperation;
 public class BigDecimalMultiply extends AbstractNToOneOperation<BigDecimal> {
 
 	@Override
-	protected Integer requiredArgsCount(String operator) {
-		return "*".equals(operator) ? 2 : null;
+	protected int requiredArgsCount(String operator) {
+		return "*".equals(operator) ? 2 : -1;
 	}
 
 	@Override
