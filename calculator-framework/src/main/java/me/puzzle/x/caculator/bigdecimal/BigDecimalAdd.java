@@ -1,19 +1,23 @@
 package me.puzzle.x.caculator.bigdecimal;
 
 import java.math.BigDecimal;
+import java.util.List;
 
-import me.puzzle.x.caculator.operations.Abstract2ArgsOperation;
+import me.puzzle.x.caculator.operations.AbstractNToOneOperation;
 
-public class BigDecimalAdd extends Abstract2ArgsOperation<BigDecimal> {
+public class BigDecimalAdd extends AbstractNToOneOperation<BigDecimal> {
 
 	@Override
-	public BigDecimal apply(BigDecimal _1stArg, BigDecimal _2ndArg) {
-		return _1stArg.add(_2ndArg);
+	protected Integer requiredArgsCount(String operator) {
+		if ("+".equals(operator)) {
+			return 2;
+		}
+		return null;
 	}
 
 	@Override
-	protected String getOperator() {
-		return "+";
+	protected BigDecimal apply(String operator, List<BigDecimal> args) {
+		return args.get(0).add(args.get(1));
 	}
 
 }

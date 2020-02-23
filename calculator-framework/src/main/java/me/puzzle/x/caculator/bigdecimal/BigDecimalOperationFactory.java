@@ -23,9 +23,10 @@ public class BigDecimalOperationFactory implements OperationFactory<BigDecimal> 
 		availableOperators.add(new BigDecimalSqrt());
 		availableOperators.add(new BigDecimalAvgN());
 		availableOperators.add(new ClearOperation<BigDecimal>());
-		RedoOperator<BigDecimal> redoOperation = new RedoOperator<BigDecimal>(this);
+		RedoOperator<BigDecimal> redoOperation = new RedoOperator<>(this);
 		availableOperators.add(new UndoOperation<BigDecimal>(redoOperation));
 		availableOperators.add(redoOperation);
+		availableOperators.add(new BigDecimalInput());
 	}
 
 	@Override
@@ -34,10 +35,6 @@ public class BigDecimalOperationFactory implements OperationFactory<BigDecimal> 
 			if (handler.canHandle(input)) {
 				return handler;
 			}
-		}
-		Operator<BigDecimal> inputHandler = new BigDecimalInput(input);
-		if (inputHandler.canHandle(input)) {
-			return inputHandler;
 		}
 		return null;
 	}

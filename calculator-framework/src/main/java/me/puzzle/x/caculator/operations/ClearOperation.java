@@ -18,7 +18,7 @@ public class ClearOperation<T> implements Operator<T> {
 	}
 
 	@Override
-	public Iterator<Result<T>> calculate(ArgsSupplier<T> provider) {
+	public Iterator<Result<T>> calculate(String operator, ArgsSupplier<T> provider) {
 		Result<T> result = ClearRecord.from(provider);
 		if (result != null) {
 			return Arrays.asList(result).iterator();

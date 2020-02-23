@@ -37,9 +37,7 @@ public class DecimalCalculator implements Calculator<BigDecimal> {
 		nf.setRoundingMode(RoundingMode.DOWN);
 		StringBuilder stringBuilder = new StringBuilder("stack: ");
 		if (list != null) {
-			list.forEach(number -> {
-				stringBuilder.append(nf.format(number.doubleValue())).append(" ");
-			});
+			list.forEach(number -> stringBuilder.append(nf.format(number.doubleValue())).append(" "));
 		}
 		return stringBuilder.toString();
 	}
@@ -72,7 +70,7 @@ public class DecimalCalculator implements Calculator<BigDecimal> {
 	}
 
 	@Override
-	public Boolean apply(String input) {
+	public boolean apply(String input) {
 		if (errorMessage == null && StringUtils.isNotBlank(input)) {
 			Map<Integer, String> commands = this.split(input);
 			for (Entry<Integer, String> indexCommand : commands.entrySet()) {

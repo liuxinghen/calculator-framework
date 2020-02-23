@@ -26,7 +26,7 @@ public class RedoOperator<T> implements Operator<T>, Consumer<String> {
 	}
 
 	@Override
-	public Iterator<? extends Result<T>> calculate(ArgsSupplier<T> provider) {
+	public Iterator<Result<T>> calculate(String operator, ArgsSupplier<T> provider) {
 		if (!record.isEmpty()) {
 			String input = record.pop();
 			return operationFactory.getOperation(input).calculate(input, provider);

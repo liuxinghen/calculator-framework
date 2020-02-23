@@ -21,16 +21,12 @@ public class StackCalculator<T> implements Calculator<T> {
 
 	private OperationFactory<T> operationFactory;
 
-	public StackCalculator(OperationFactory<T> operationFactory, boolean displayAfterApply) {
-		this.operationFactory = operationFactory;
-	}
-
 	public StackCalculator(OperationFactory<T> operationFactory) {
 		this.operationFactory = operationFactory;
 	}
 
 	@Override
-	public Boolean apply(String input) {
+	public boolean apply(String input) {
 		Operator<T> op = operationFactory.getOperation(input);
 		if (op == null) {
 			return false;

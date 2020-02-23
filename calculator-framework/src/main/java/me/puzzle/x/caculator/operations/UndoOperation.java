@@ -25,7 +25,7 @@ public class UndoOperation<T> implements Operator<T> {
 	}
 
 	@Override
-	public Iterator<Result<T>> calculate(ArgsSupplier<T> provider) {
+	public Iterator<Result<T>> calculate(String operator, ArgsSupplier<T> provider) {
 		Result<T> result;
 		if (provider.canSupply(1)) {
 			result = provider.get();
