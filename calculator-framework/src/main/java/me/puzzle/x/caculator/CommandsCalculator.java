@@ -22,7 +22,7 @@ public class CommandsCalculator<T> implements Calculator<T> {
 
 	public CommandsCalculator(OperationFactory<T> operationFactory, PrintStream out,
 			Function<T, String> objectFormatter) {
-		this.calculator = new SingleCommandCalculator<T>(operationFactory);
+		this.calculator = new SingleCommandCalculator<>(operationFactory);
 		this.out = out;
 		if (objectFormatter == null) {
 			this.objectFormatter = Object::toString;

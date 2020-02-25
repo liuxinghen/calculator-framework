@@ -55,13 +55,18 @@ public abstract class AbstractNToOneOperation<T> implements Operator<T> {
 			args.addFirst(arg);
 		}
 		Collections.reverse(argsArray);
-		T calculatedResult = this.apply(operator, argsArray);
-		if (calculatedResult != null) {
-			Result<T> result = new CalculationResult<>(calculatedResult, operator, args);
-			return Arrays.asList(result).iterator();
-		} else {
+		try {
+			T calculatedResult = this.apply(operator, argsArray);
+			if (calculatedResult != null) {
+				Result<T> result = new CalculationResult<>(calculatedResult, operator, args);
+				return Arrays.asList(result).iterator();
+			} else {
+				return null;
+			}
+		} catch (Exception e) {
 			return null;
 		}
+
 	}
 
 }

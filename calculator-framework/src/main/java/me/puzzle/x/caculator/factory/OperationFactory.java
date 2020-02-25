@@ -15,6 +15,6 @@ public interface OperationFactory<T> {
 		return null;
 	}
 
-	List<Operator<T>> getAvailableOperators();;
+	List<Operator<T>> getAvailableOperators();
 
 }
