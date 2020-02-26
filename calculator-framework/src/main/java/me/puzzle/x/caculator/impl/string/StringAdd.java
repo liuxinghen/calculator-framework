@@ -1,4 +1,4 @@
-package me.puzzle.x.caculator.string;
+package me.puzzle.x.caculator.impl.string;
 
 import java.util.List;
 

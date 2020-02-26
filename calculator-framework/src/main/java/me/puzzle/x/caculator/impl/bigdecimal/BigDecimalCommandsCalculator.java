@@ -1,13 +1,13 @@
-package me.puzzle.x.caculator;
+package me.puzzle.x.caculator.impl.bigdecimal;
 
 import java.io.PrintStream;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.NumberFormat;
 
-import me.puzzle.x.caculator.bigdecimal.BigDecimalOperationFactory;
+import me.puzzle.x.caculator.calculator.CommandsCalculator;
 
-public class DecimalCalculator extends CommandsCalculator<BigDecimal> {
+public class BigDecimalCommandsCalculator extends CommandsCalculator<BigDecimal> {
 
 	private static NumberFormat nf;
 	static {
@@ -16,7 +16,7 @@ public class DecimalCalculator extends CommandsCalculator<BigDecimal> {
 		nf.setRoundingMode(RoundingMode.DOWN);
 	}
 
-	public DecimalCalculator(PrintStream out) {
+	public BigDecimalCommandsCalculator(PrintStream out) {
 		super(new BigDecimalOperationFactory(), out, number -> nf.format(number.doubleValue()));
 	}
 

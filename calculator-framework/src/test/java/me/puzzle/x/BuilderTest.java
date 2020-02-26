@@ -28,6 +28,6 @@ public class BuilderTest {
 				.buildCommandsCalculator();
 		calculator.apply("1.2");
 		calculator.apply("3.5");
-		calculator.apply("sum");
+		calculator.apply("add");
 	}
 }

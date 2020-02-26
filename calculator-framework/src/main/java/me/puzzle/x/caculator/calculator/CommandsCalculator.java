@@ -1,4 +1,4 @@
-package me.puzzle.x.caculator;
+package me.puzzle.x.caculator.calculator;
 
 import java.io.PrintStream;
 import java.util.LinkedHashMap;

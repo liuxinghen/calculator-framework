@@ -10,7 +10,7 @@ import java.util.function.Function;
 import java.util.stream.Stream;
 
 import lombok.extern.slf4j.Slf4j;
-import me.puzzle.x.caculator.CommandsCalculator;
+import me.puzzle.x.caculator.calculator.CommandsCalculator;
 import me.puzzle.x.caculator.factory.OperationFactory;
 import me.puzzle.x.caculator.operations.AbstractNToOneOperation;
 import me.puzzle.x.caculator.operations.ClearOperation;

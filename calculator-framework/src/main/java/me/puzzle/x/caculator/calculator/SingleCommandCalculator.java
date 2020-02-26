@@ -1,4 +1,4 @@
-package me.puzzle.x.caculator;
+package me.puzzle.x.caculator.calculator;
 
 import java.util.Collections;
 import java.util.Iterator;

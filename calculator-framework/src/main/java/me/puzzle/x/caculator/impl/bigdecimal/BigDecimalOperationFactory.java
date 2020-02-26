@@ -1,4 +1,4 @@
-package me.puzzle.x.caculator.bigdecimal;
+package me.puzzle.x.caculator.impl.bigdecimal;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -6,6 +6,7 @@ import java.util.List;
 
 import me.puzzle.x.caculator.factory.OperationFactory;
 import me.puzzle.x.caculator.operations.ClearOperation;
+import me.puzzle.x.caculator.operations.InputOperation;
 import me.puzzle.x.caculator.operations.RedoOperator;
 import me.puzzle.x.caculator.operations.UndoOperation;
 import me.puzzle.x.caculator.spec.Operator;
@@ -26,7 +27,7 @@ public class BigDecimalOperationFactory implements OperationFactory<BigDecimal> 
 		RedoOperator<BigDecimal> redoOperation = new RedoOperator<>(this);
 		availableOperators.add(new UndoOperation<BigDecimal>(redoOperation));
 		availableOperators.add(redoOperation);
-		availableOperators.add(new BigDecimalInput());
+		availableOperators.add(new InputOperation<BigDecimal>(BigDecimal::new));
 	}
 
 	@Override

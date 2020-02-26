@@ -3,8 +3,8 @@ package me.puzzle.x;
 import org.junit.Assert;
 import org.junit.Test;
 
-import me.puzzle.x.caculator.CommandsCalculator;
-import me.puzzle.x.caculator.string.StringOperationFactory;
+import me.puzzle.x.caculator.calculator.CommandsCalculator;
+import me.puzzle.x.caculator.impl.string.StringOperationFactory;
 
 public class StringCalculatorTest {
 
